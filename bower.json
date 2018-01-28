@@ -1,7 +1,7 @@
 {
-  "name": "scroll-top",
+  "name": "uvalib-scroll-top",
   "description": "scroll to top",
-  "main": "scroll-top.html",
+  "main": "uvalib-scroll-top.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "paper-toast": "polymerelements/paper-toast#^2.0.0"
