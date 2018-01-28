@@ -1,23 +1,46 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-toast/paper-toast.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../uvalib-theme/uvalib-theme.html">
+<link rel="import" href="../uvalib-theme/uvalib-icons.html">
 
 <dom-module id="uvalib-scroll-top">
   <template>
-    <style>
-       :host {
-        display: block;
-      }
+    <custom-style>
+      <style include="uvalib-theme">
+         :host {
+          display: block;
+        }
+        paper-fab {
+          transition: opacity .25s ease-in-out;
+          position: fixed;
+          right: 25px;
+          bottom: 30px;
+          opacity: 0;
+        }
+        paper-fab[show] {
+          opacity: 1;
+        }
+/*
+        .toast {
+            --paper-toast-background-color : var(--uvalib-scroll-top-background-color, var(--color-white, white));
+            --paper-toast-color: var(--uvalib-scroll-top-color, var(--color-primary-orange, black));
+            --paper-font-common-base: {
+              background-color: var();
+              border-radius: 50px;
+              min-width: inherit;
+              min-height: inherit;
+            };
+        }
+        */
+      </style>
+    </custom-style>
 
-      .toast {
-          --paper-toast-background-color : var(--uvalib-scroll-top-background-color, white);
-          --paper-toast-color: var(--uvalib-scroll-top-color, black);
-      }
-    </style>
-
-      <paper-toast class="toast" id="toastButton" duration="0" on-click="topFunction">
+      <paper-fab icon="angle-up" show$="[[_show]]" on-click="topFunction"></paper-fab>
+<!--
+      <paper-toast class="toast" id="toastButton" duration="0" on-click="topFunction" horizontal-align="right">
         <slot></slot>
       </paper-toast>
-
+-->
   </template>
 
   <script>
@@ -47,10 +70,11 @@
         console.log(this.enabled)
         if (this.enabled == "true") {
           if (document.body.scrollTop > this.activatewhen || document.documentElement.scrollTop > this.activatewhen) {
-            this.$.toastButton.open();
-
+            //this.$.toastButton.open();
+            this._show = true;
           } else {
-            this.$.toastButton.close();
+            //this.$.toastButton.close();
+            this._show = false;
           }
         }
       }
@@ -73,7 +97,8 @@
             type: String,
             notify: true,
             value: "true"
-          }
+          },
+          _show: Boolean
         };
       }
     }
