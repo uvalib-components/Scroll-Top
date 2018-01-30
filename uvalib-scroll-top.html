@@ -20,27 +20,11 @@
         paper-fab[show] {
           opacity: 1;
         }
-/*
-        .toast {
-            --paper-toast-background-color : var(--uvalib-scroll-top-background-color, var(--color-white, white));
-            --paper-toast-color: var(--uvalib-scroll-top-color, var(--color-primary-orange, black));
-            --paper-font-common-base: {
-              background-color: var();
-              border-radius: 50px;
-              min-width: inherit;
-              min-height: inherit;
-            };
-        }
-        */
       </style>
     </custom-style>
 
-      <paper-fab icon="angle-up" show$="[[_show]]" on-click="topFunction"></paper-fab>
-<!--
-      <paper-toast class="toast" id="toastButton" duration="0" on-click="topFunction" horizontal-align="right">
-        <slot></slot>
-      </paper-toast>
--->
+    <paper-fab icon="angle-up" show$="[[_show]]" on-click="topFunction"></paper-fab>
+
   </template>
 
   <script>
@@ -83,6 +67,7 @@
       topFunction() {
         document.body.scrollTop = 0; // For Chrome, Safari and Opera
         document.documentElement.scrollTop = 0; // For IE and Firefox
+        window.focus();
       }
 
       static get is() { return 'uvalib-scroll-top'; }
