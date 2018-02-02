@@ -51,13 +51,10 @@
       }
 
       scrollFunction() {
-        console.log(this.enabled)
         if (this.enabled == "true") {
           if (document.body.scrollTop > this.activatewhen || document.documentElement.scrollTop > this.activatewhen) {
-            //this.$.toastButton.open();
             this._show = true;
           } else {
-            //this.$.toastButton.close();
             this._show = false;
           }
         }
